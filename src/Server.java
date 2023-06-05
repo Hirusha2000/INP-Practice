@@ -10,11 +10,11 @@ import java.net.Socket;
 public class Server {
  public static void main(String[] args) {
 
-
   try {
    System.out.println("waiting for client requests");
    ServerSocket serverSocket = new ServerSocket(9806);
-   Socket socket =serverSocket.accept(); //
+   Socket socket =serverSocket.accept(); // request enakan hold karan innawa  blocking call ekak
+   System.out.println("Connection is established");
   } catch (IOException e) {
    e.printStackTrace();
   }
