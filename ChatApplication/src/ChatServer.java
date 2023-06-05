@@ -2,6 +2,7 @@ import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
 import java.io.PrintWriter;
+import java.net.ServerSocket;
 import java.net.Socket;
 import java.util.HashSet;
 
@@ -17,7 +18,29 @@ public static HashSet<String> names= new HashSet<String>();
 
 public static HashSet<PrintWriter> writers =new HashSet<PrintWriter>();
 
-    public static void main(String[] args) {
+    public static void main(String[] args) throws Exception {
+
+        System.out.println("The chat server is running");
+        ServerSocket listner =new ServerSocket(PORT);
+
+
+try {
+    while (true){
+
+        Socket socket=listner.accept();
+        Thread handlerthread= new Thread(new Handler(socket));
+        handlerthread.start();
+
+    }
+} finally {
+    listner.close();
+}
+
+
+
+
+
+
 
     }
 
